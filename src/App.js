@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import ListItem from './ListItem/ListItem';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [todos, setTodos] = useState(
+		JSON.parse(window.localStorage.getItem('todos')) || [],
+	);
+	const takeInputValue = (evt) => {
+		if (evt.code === 'Enter') {
+			const newTodo = {
+				id: todos.at(-1)?.id ? todos.at(-1).id + 1 : 1,
+				text: evt.target.value,
+				isCompleted: false,
+			};
+			console.log(newTodo);
+			setTodos([...todos, newTodo]);
+			evt.target.value = '';
+		}
+	};
+
+	localStorage.setItem('todos', JSON.stringify(todos));
+
+	return (
+		<div className='App'>
+			<input
+				className='input'
+				type='text'
+				onKeyUp={takeInputValue}
+				placeholder='to Do ...'
+			/>
+			<ul className='list'>
+				{todos.map((e) => (
+					<ListItem item={e} key={e.id} todos={todos} setTodos={setTodos} />
+				))}
+			</ul>
+		</div>
+	);
 }
 
 export default App;

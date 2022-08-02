@@ -1,0 +1,61 @@
+.input {
+  margin-left: 30px;
+  margin-bottom: 30px;
+  padding: 5px 15px;
+  border: 0;
+  border-bottom: 1.4px solid rgb(66, 65, 65);
+}
+
+.list {
+  list-style-type: none;
+}
+
+.item {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.text2 {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: line-through;
+}
+
+button {
+  margin-left: 10px;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+
+.edit {
+  background-color: blue;
+  color: #fff;
+  border: 1.4px solid transparent;
+  transition: all .3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: blue;
+    border: 1.4px solid blue;
+  }
+}
+
+.delete {
+  color: #fff;
+  background-color: red;
+  border: 1.4px solid transparent;
+  transition: all .3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: red;
+    border: 1.4px solid red;
+  }
+}
